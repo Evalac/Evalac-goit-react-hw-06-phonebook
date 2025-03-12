@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "jsx": "react-jsx",
+    "tsx": "react"
+  },
+  "paths": {
+    "components/*": ["components/*"]
+  }
+}
