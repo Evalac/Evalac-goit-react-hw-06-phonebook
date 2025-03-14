@@ -6,8 +6,6 @@ import { statusFilters } from '../../redux/constants';
 
 export const StatusFilter = () => {
   const filter = useSelector(state => state.filters.status);
-  console.log(filter);
-  console.log(statusFilters);
 
   return (
     <div className={css.wrapper}>
