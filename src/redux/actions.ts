@@ -32,4 +32,25 @@ const setStatusFilter = (value: any) => {
   };
 };
 
-export { addTask, deleteTask, toggleCompleted, setStatusFilter };
+const incrementValue = number => {
+  return {
+    type: 'increment',
+    payload: +1,
+  };
+};
+
+const decrementValue = number => {
+  return {
+    type: 'decrement',
+    payload: -1,
+  };
+};
+
+export {
+  addTask,
+  deleteTask,
+  toggleCompleted,
+  setStatusFilter,
+  incrementValue,
+  decrementValue,
+};
