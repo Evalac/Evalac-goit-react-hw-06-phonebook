@@ -58,10 +58,16 @@ const reducer = (state: any, action: any) => {
         total: state.total - action.payload,
       };
     }
+    case 'setStep': {
+      return {
+        ...state,
+        step: action.payload,
+      };
+    }
 
     default:
       return state;
   }
 };
 
-export const store = createStore(reducer, { total: 0, users: [] });
+export const store = createStore(reducer, { total: 0, step: 0, users: [] });
