@@ -1,17 +1,45 @@
-// import { store } from './store.ts';
-// import { incrementValue,decrementValue } from './actions.js';
+import { initialState } from './initialState.js';
+import { combineReducers } from 'redux';
 
-// console.log(store);
+const userReducer = (state = initialState.users, action) => {
+  switch (action.type) {
+    case 'addUser':
+      return {
+        ...state,
+        users: [...state.users, { ...action.payload }],
+      };
 
-// const reducer = (state = store, action) => {
-//   switch (action.type) {
-//     case 'increment':
-//       return {
-//         ...state,
-//         value: action.payload,
-//       };
-//     case 'decrement'{ };
-//     default:
-//       return state;
-//   }
-// };
+    default:
+      return state;
+  }
+};
+
+const counterReducer = (state = initialState.counter, action) => {
+  switch (action.type) {
+    case 'increment':
+      return {
+        ...state,
+        total: state.total + action.payload,
+      };
+    case 'decrement': {
+      return {
+        ...state,
+        total: state.total - action.payload,
+      };
+    }
+    case 'setStep': {
+      return {
+        ...state,
+        step: action.payload,
+      };
+    }
+
+    default:
+      return state;
+  }
+};
+
+export const reducer = combineReducers({
+  counter: counterReducer,
+  users: userReducer,
+});

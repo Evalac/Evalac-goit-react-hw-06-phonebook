@@ -2,20 +2,19 @@ import css from './CounterComponent.module.css';
 import Step from 'components/Step/Step';
 
 import { useSelector, useDispatch } from 'react-redux';
+import { counterDecrement, counterIncrement } from '../../redux/actions.ts';
 
 function CounterComponent(params) {
-  const total = useSelector(state => state.total);
-  console.log('total: ', total);
-  const step = useSelector(state => state.step);
-  console.log('step: ', step);
+  const total = useSelector(state => state.counter.total);
+  const step = useSelector(state => state.counter.step);
 
   const dispatch = useDispatch();
 
   const clickOnButton = e => {
     if (e.target.id === 'incr') {
-      dispatch({ type: 'increment', payload: 1 });
+      dispatch(counterIncrement(step));
     } else {
-      dispatch({ type: 'decrement', payload: 1 });
+      dispatch(counterDecrement(step));
     }
   };
 

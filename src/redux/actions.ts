@@ -46,7 +46,23 @@ const decrementValue = number => {
   };
 };
 
+const counterIncrement = (step: number) => {
+  return {
+    type: 'increment',
+    payload: step,
+  };
+};
+
+const counterDecrement = (step: number) => {
+  return {
+    type: 'decrement',
+    payload: step,
+  };
+};
+
 export {
+  counterDecrement,
+  counterIncrement,
   addTask,
   deleteTask,
   toggleCompleted,
