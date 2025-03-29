@@ -60,7 +60,15 @@ const counterDecrement = (step: number) => {
   };
 };
 
+const setStep = (value: number) => {
+  return {
+    type: 'setStep',
+    payload: value,
+  };
+};
+
 export {
+  setStep,
   counterDecrement,
   counterIncrement,
   addTask,
