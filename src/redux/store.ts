@@ -44,6 +44,8 @@
 import { createStore } from 'redux';
 
 const reducer = (state: any, action: any) => {
+  console.log(action);
+
   switch (action.type) {
     case 'increment':
       return {
