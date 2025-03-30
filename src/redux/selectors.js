@@ -1,4 +1,3 @@
-const getTasks = state => state.tasks;
-const getStatusFilter = state => state.filters.status;
+export const getTasks = state => state.tasks;
 
-export { getTasks, getStatusFilter };
+export const getStatusFilter = state => state.filters;
