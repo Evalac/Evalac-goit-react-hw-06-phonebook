@@ -1,7 +1,6 @@
 import { initialState, tasksInitialState } from './initialState.js';
-import { combineReducers } from 'redux';
 
-const taskReducer = (state = tasksInitialState, action) => {
+export const taskReducer = (state = tasksInitialState, action) => {
   switch (action.type) {
     case 'tasks/addTask':
       return [...state, action.payload];
@@ -20,7 +19,7 @@ const taskReducer = (state = tasksInitialState, action) => {
   }
 };
 
-const filterReducer = (state = tasksInitialState, action) => {
+export const filterReducer = (state = tasksInitialState, action) => {
   switch (action.type) {
     case 'filters/setStatusFilter':
       return {
@@ -33,7 +32,7 @@ const filterReducer = (state = tasksInitialState, action) => {
   }
 };
 
-const userReducer = (state = initialState.users, action) => {
+export const userReducer = (state = initialState.users, action) => {
   switch (action.type) {
     case 'addUser':
       return {
@@ -46,7 +45,7 @@ const userReducer = (state = initialState.users, action) => {
   }
 };
 
-const counterReducer = (state = initialState.counter, action) => {
+export const counterReducer = (state = initialState.counter, action) => {
   switch (action.type) {
     case 'increment':
       return {
@@ -70,10 +69,3 @@ const counterReducer = (state = initialState.counter, action) => {
       return state;
   }
 };
-
-export const reducer = combineReducers({
-  counter: counterReducer,
-  users: userReducer,
-  tasks: taskReducer,
-  filter: filterReducer,
-});

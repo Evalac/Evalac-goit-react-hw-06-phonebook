@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
+import { createAction } from '@reduxjs/toolkit';
 
-const addTask = (text: string) => {
+export const addTask = createAction('tasks/addTask', (text: string) => {
   return {
     type: 'tasks/addTask',
     payload: {
@@ -9,42 +10,63 @@ const addTask = (text: string) => {
       text,
     },
   };
-};
-
-const deleteTask = (taskId: number) => {
+});
+export const deleteTask = createAction('tasks/deleteTask', (taskId: number) => {
   return {
     type: 'tasks/deleteTask',
     payload: taskId,
   };
-};
+});
+export const toggleCompleted = createAction(
+  'tasks/toggleCompleted',
+  (taskId: number) => {
+    return {
+      type: 'tasks/toggleCompleted',
+      payload: taskId,
+    };
+  }
+);
+export const setStatusFilter = createAction(
+  'filters/setStatusFilter',
+  (value: any) => {
+    return {
+      type: 'filters/setStatusFilter',
+      payload: value,
+    };
+  }
+);
 
-const toggleCompleted = (taskId: number) => {
-  return {
-    type: 'tasks/toggleCompleted',
-    payload: taskId,
-  };
-};
+// const addTask = (text: string) => {
+//   return {
+//     type: 'tasks/addTask',
+//     payload: {
+//       id: nanoid(),
+//       completed: false,
+//       text,
+//     },
+//   };
+// };
 
-const setStatusFilter = (value: any) => {
-  return {
-    type: 'filters/setStatusFilter',
-    payload: value,
-  };
-};
+// const deleteTask = (taskId: number) => {
+//   return {
+//     type: 'tasks/deleteTask',
+//     payload: taskId,
+//   };
+// };
 
-const incrementValue = number => {
-  return {
-    type: 'increment',
-    payload: +1,
-  };
-};
+// const toggleCompleted = (taskId: number) => {
+//   return {
+//     type: 'tasks/toggleCompleted',
+//     payload: taskId,
+//   };
+// };
 
-const decrementValue = number => {
-  return {
-    type: 'decrement',
-    payload: -1,
-  };
-};
+// const setStatusFilter = (value: any) => {
+//   return {
+//     type: 'filters/setStatusFilter',
+//     payload: value,
+//   };
+// };
 
 const counterIncrement = (step: number) => {
   return {
@@ -67,14 +89,4 @@ const setStep = (value: number) => {
   };
 };
 
-export {
-  setStep,
-  counterDecrement,
-  counterIncrement,
-  addTask,
-  deleteTask,
-  toggleCompleted,
-  setStatusFilter,
-  incrementValue,
-  decrementValue,
-};
+export { setStep, counterDecrement, counterIncrement };

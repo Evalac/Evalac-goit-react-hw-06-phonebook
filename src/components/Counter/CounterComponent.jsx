@@ -7,6 +7,8 @@ import { counterDecrement, counterIncrement } from '../../redux/actions.ts';
 function CounterComponent(params) {
   const total = useSelector(state => state.counter.total);
   const step = useSelector(state => state.counter.step);
+  const stateUseSelector = useSelector(state => state.counter);
+  // console.log(stateUseSelector); // хук useSelector звертається до почткового обʼєкту стану
 
   const dispatch = useDispatch();
 
