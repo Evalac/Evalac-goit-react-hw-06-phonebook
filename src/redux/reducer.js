@@ -1,23 +1,43 @@
 import { initialState, tasksInitialState } from './initialState.js';
+import { createReducer } from '@reduxjs/toolkit';
+import { addTask, deleteTask, toggleCompleted } from '../redux/actions.ts';
 
-export const taskReducer = (state = tasksInitialState, action) => {
-  switch (action.type) {
-    case 'tasks/addTask':
+export const taskReducer = createReducer(tasksInitialState, builder => {
+  builder
+    .addCase(addTask, (state, action) => {
       return [...state, action.payload];
-    case 'tasks/deleteTask':
+    })
+    .addCase(deleteTask, (state, action) => {
       return state.filter(task => task.id !== action.payload);
-    case 'tasks/toggleCompleted':
+    })
+    .addCase(toggleCompleted, (state, action) => {
       return state.map(task => {
         if (task.id !== action.payload) {
           return task;
         }
         return { ...task, completed: !task.completed };
       });
+    });
+});
 
-    default:
-      return state;
-  }
-};
+// export const taskReducer = (state = tasksInitialState, action) => {
+//   switch (action.type) {
+//     case 'tasks/addTask':
+//       return [...state, action.payload];
+//     case 'tasks/deleteTask':
+//       return state.filter(task => task.id !== action.payload);
+//     case 'tasks/toggleCompleted':
+//       return state.map(task => {
+//         if (task.id !== action.payload) {
+//           return task;
+//         }
+//         return { ...task, completed: !task.completed };
+//       });
+
+//     default:
+//       return state;
+//   }
+// };
 
 export const filterReducer = (state = tasksInitialState, action) => {
   switch (action.type) {

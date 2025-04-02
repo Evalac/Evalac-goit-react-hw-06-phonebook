@@ -88,5 +88,5 @@ const setStep = (value: number) => {
     payload: value,
   };
 };
-//comiit
+//commit
 export { setStep, counterDecrement, counterIncrement };
