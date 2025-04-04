@@ -3,7 +3,6 @@ import { createAction } from '@reduxjs/toolkit';
 
 export const addTask = createAction('tasks/addTask', (text: string) => {
   return {
-    type: 'tasks/addTask',
     payload: {
       id: nanoid(),
       completed: false,
@@ -13,7 +12,6 @@ export const addTask = createAction('tasks/addTask', (text: string) => {
 });
 export const deleteTask = createAction('tasks/deleteTask', (taskId: number) => {
   return {
-    type: 'tasks/deleteTask',
     payload: taskId,
   };
 });
